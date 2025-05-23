@@ -155,7 +155,7 @@ const InvoiceTemplate5 = () => {
         console.error("Invalid file selected");
       }
     
-      // ✅ Log FormData to check entries before sending
+      // Log FormData to check entries before sending
       for (let [key, value] of formData.entries()) {
         console.log(`${key}:`, value);
       }
@@ -167,7 +167,7 @@ const InvoiceTemplate5 = () => {
 
       console.log("formData ",formData)
     
-      // 🚀 Send to backend
+      // Send to backend
       try {
         const response = await axios.put(`${backendUrl}/api/admin/update-invoice`, formData, {
           headers: { "Content-Type": "multipart/form-data" },
