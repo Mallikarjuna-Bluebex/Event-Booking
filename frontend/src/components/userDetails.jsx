@@ -20,7 +20,8 @@ const UserDetails = () => {
   const [phone, setPhone] = useState("+91");
   //const [invoiceId, setInvoiceId] = useState("");
 
-   const backendUrl = import.meta.env.VITE_BACKEND_URL;
+  const backendUrl = import.meta.env.VITE_BACKEND_URL;
+  const navigate = useNavigate();
 
   const [emailError, setEmailError] = useState("");
   const [confirmEmailError, setConfirmEmailError] = useState("");
@@ -62,18 +63,32 @@ const UserDetails = () => {
   }, []);
 
   //reload page
-  useEffect(() => {
+   useEffect(() => {
+    //Check if user should be redirected home after reload
+    const shouldRedirect = sessionStorage.getItem("shouldRedirectHome") === "true";
+    const shouldSkip = sessionStorage.getItem("skipReloadRedirect") === "true";
+
+    if (shouldRedirect && !shouldSkip) {
+      sessionStorage.removeItem("shouldRedirectHome");
+      sessionStorage.removeItem("skipReloadRedirect");
+      //redirect to home
+      window.location.replace("/");
+    }
+
+    // Set reload flag if user reloads the page
     const handleBeforeUnload = (e) => {
+      if (sessionStorage.getItem("skipReloadRedirect") === "true") return;
+      sessionStorage.setItem("shouldRedirectHome", "true");
       e.preventDefault();
       e.returnValue = "";
-      sessionStorage.setItem("shouldRedirectHome", "true");
     };
 
     window.addEventListener("beforeunload", handleBeforeUnload);
+
     return () => {
       window.removeEventListener("beforeunload", handleBeforeUnload);
     };
-  }, []);
+  }, [navigate]);
 
 
   const [formData, setFormData] = useState({
@@ -88,8 +103,6 @@ const UserDetails = () => {
 
  // console.log("invoiceId: ",formData.id)
 
-  const navigate = useNavigate();
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -97,7 +110,7 @@ const UserDetails = () => {
 
   const handleCheckboxChange = () => {
     setIsChecked(!isChecked);
-    if (!isChecked) setShowCheckboxError(false); // ✅ Hide error when checkbox is selected
+    if (!isChecked) setShowCheckboxError(false); //Hide error when checkbox is selected
   };
 
   // Real-time email validation
@@ -360,7 +373,7 @@ const UserDetails = () => {
   }
 
   //paypal payment
-  // ✅ Create Payment
+  //Create Payment
 const handlePaypalPayment = async () => {
   if (!isChecked) {
       setShowCheckboxError(true); // Show error message if checkbox is not checked

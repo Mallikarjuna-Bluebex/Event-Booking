@@ -3,16 +3,6 @@ import Event from "../models/eventModel.js";
 import AddOn from "../models/addonModel.js";
 import PaymentGateway from "../models/paymentGatewayModel.js";
 import SiteVisit from "../models/sitevisitModel.js";
-//import axios from 'axios'
-//import crypto from 'crypto'
-//import uniqid from 'uniqid'
-//import sha256 from 'sha256'
-//import PayU from 'payu-websdk'
-//import dotenv from 'dotenv'
-//import Razorpay from 'razorpay'
-//import paypal from 'paypal-rest-sdk'
-//import paypal from "@paypal/checkout-server-sdk";
-//import express from "express";
 
 
 // Increment visit
@@ -106,19 +96,14 @@ const bookingEvent = async (req, res) => {
                 return res.status(400).json({ message: `Not enough slots available for service on ${selectedDate}: ${service.name}` });
             }
 
-          {/*  option.slotsByDate.set(selectedDate, currentSlots - service.quantity);
-            event.markModified('options');//make mark for update
-            console.log("final event: ",event)
-            await event.save();//save updated event with service*/}
-
-            // ✅ Add eventId to service
+            //Add eventId to service
             updatedServices.push({
                 ...service,
                 eventId: event._id, // Attach eventId
             });
         }
 
-        // ✅ Create a new booking with eventId included
+        // Create a new booking with eventId included
         const newBooking = new Booking({
             selectedDate,
             services: updatedServices, // Save updated services with eventId

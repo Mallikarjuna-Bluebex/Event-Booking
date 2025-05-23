@@ -16,10 +16,10 @@ const PaymentSuccess = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   //const [paymentUpdated, setPaymentUpdated] = useState(false);
-  const paymentUpdatedRef = useRef(false); // ✅ Use useRef to prevent duplicate calls
+  const paymentUpdatedRef = useRef(false); //Use useRef to prevent duplicate calls
   const bookingId = sessionStorage.getItem('bookingId'); // Get bookingId from sessionStorage
-
-  console.log(bookingId)
+  sessionStorage.removeItem("skipReloadRedirect");//remove reload skip
+  //console.log(bookingId)
 
   
   // Fetch user and company data, then post to generate invoice
@@ -28,7 +28,7 @@ const PaymentSuccess = () => {
       try {
         setLoading(true);
 
-        // 1. Fetch user info
+        //Fetch user info
         const userRes = await axios.get(`${backendUrl}/api/admin/get-userinfo/${bookingId}`);
         const fullUserData = userRes.data;
 
@@ -60,7 +60,7 @@ const PaymentSuccess = () => {
 
    
 
-        // 2. Fetch company info
+        //Fetch company info
         const companyRes = await axios.get(backendUrl+'/api/admin/get-invoiceinfo');
         const fullCompanyData = companyRes.data;
 
@@ -75,7 +75,7 @@ const PaymentSuccess = () => {
           logo: fullCompanyData?.invoice.logo,
         };
 
-        // 3. Combine and post to generate invoice
+        //Combine and post to generate invoice
         const payload = {
           userInfo: extractedUserInfo,
           companyInfo: extractedCompanyInfo,
@@ -87,7 +87,7 @@ const PaymentSuccess = () => {
        console.log("invoice response: ",invoiceRes.data);
        setInvoiceData(invoiceRes.data);
 
-     // 4. Update payment status and send email
+     //Update payment status and send email
      await updatePaymentStatus(selectedDate, services, status);
 
        //console.log("invoice Response",invoiceRes.data.pdfUrl)
@@ -105,12 +105,11 @@ const PaymentSuccess = () => {
   
    const updatePaymentStatus = async (selectedDateParam, servicesParam, statusParam) => {
     //console.log("Getting into updatePaymentStatus function")
-
-       if (!bookingId || paymentUpdatedRef.current) {
+      if (!bookingId || paymentUpdatedRef.current) {
        return;
       }
       //setPaymentUpdated(true); 
-     paymentUpdatedRef.current = true; // ✅ Lock after first execution, Immediately prevent further calls
+     paymentUpdatedRef.current = true; //Lock after first execution, Immediately prevent further calls
      //console.log("Calling updatePaymentStatus...");
 
       try {
@@ -134,10 +133,10 @@ const PaymentSuccess = () => {
       }
     };
 
-   // ✅ Handler for "Go to Homepage" button
+   //Handler for "Go to Homepage" button
   const handleGoHome = async () => {
     await updatePaymentStatus(selectedDate, services, status);
-    window.location.href = '/'; // ✅ Navigate after ensuring update
+    window.location.href = '/'; //Navigate after ensuring update
   };
 
 
