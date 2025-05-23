@@ -69,10 +69,10 @@ const verifyStatus = (req, res) => {
   
     if (status === 'success') {
         const message = encodeURIComponent('Transaction successful');
-        res.redirect(`http://localhost:5173/success?message=${message}`);
+        res.redirect(`https://deploy-project-1-ndgn.onrender.com/success?message=${message}`);
       } else {
         const message = encodeURIComponent('Transaction failed');
-        res.redirect(`http://localhost:5173/failure?message=${message}`);
+        res.redirect(`https://deploy-project-1-ndgn.onrender.com/failure?message=${message}`);
       }
 
   };
@@ -104,7 +104,7 @@ const verifyStatus = (req, res) => {
         merchantTransactionId: merchantTransactionId,  //Ensure correct key name
         amount: totalAmount * 100,
         mobileNumber: "9999999999",
-        redirectUrl:`http://localhost:5000/api/user/payment-status/${merchantTransactionId}`,
+        redirectUrl:`https://deploy-project-k4im.onrender.com/api/user/payment-status/${merchantTransactionId}`,
         redirectMode:'POST',
         paymentInstrument: { type: "PAY_PAGE" }
       };
@@ -168,13 +168,13 @@ const phonepeStatus = async (req, res) => {
         const data = statusResponse.data;
 
         if (data.success && data.code === "PAYMENT_SUCCESS" && data.data.state === "COMPLETED") {
-            return res.redirect(`http://localhost:5173/success?txnId=${txnId}`);
+            return res.redirect(`https://deploy-project-1-ndgn.onrender.com/success?txnId=${txnId}`);
         } else {
-            return res.redirect(`http://localhost:5173/failure?txnId=${txnId}`);
+            return res.redirect(`https://deploy-project-1-ndgn.onrender.com/failure?txnId=${txnId}`);
         }
     } catch (error) {
         console.error("Error verifying transaction:", error);
-        return res.redirect(`http://localhost:5173/failure?txnId=${txnId}`);
+        return res.redirect(`https://deploy-project-1-ndgn.onrender.com/failure?txnId=${txnId}`);
     }
 };
 
@@ -219,12 +219,12 @@ const verifyRazorpay = (req, res) => {
       const txnId = razorpay_payment_id;
       return res.json({
         success: true,
-        redirectUrl: `http://localhost:5173/success?txnId=${txnId}`,
+        redirectUrl: `https://deploy-project-1-ndgn.onrender.com/success?txnId=${txnId}`,
       });
       
     } else {
       const txnId = razorpay_payment_id;
-      res.status(400).json({ success: false, redirectUrl: `http://localhost:5173/failure?txnId=${txnId}` });
+      res.status(400).json({ success: false, redirectUrl: `https://deploy-project-1-ndgn.onrender.com/failure?txnId=${txnId}` });
     }
   } catch (error) {
     console.error("Error verifying payment:", error);
@@ -237,7 +237,7 @@ const PAYPAL_CLIENT_SECRET = "EF_M4bpzA6TyialK2IoO4t6MhednkrcTDu6Wn-V6NbgBy6jl4D
 const PAYPAL_MODE = "sandbox"  // Use "live" for production
 
 
-// ✅ Set Up Environment (Sandbox or Live)
+//Set Up Environment (Sandbox or Live)
 const environment = new paypal.core.SandboxEnvironment(
   PAYPAL_CLIENT_ID,
   PAYPAL_CLIENT_SECRET
@@ -266,8 +266,8 @@ const initiatePaypal = async (req, res) => {
       landing_page: "BILLING",
       user_action: "PAY_NOW",
       shipping_preference: "NO_SHIPPING",
-      return_url: `http://localhost:5000/api/user/execute-payment`,
-      cancel_url: `http://localhost:5173/cancel`,
+      return_url: `https://deploy-project-k4im.onrender.com/api/user/execute-payment`,
+      cancel_url: `https://deploy-project-1-ndgn.onrender.com/cancel`,
 
 
     },
@@ -300,10 +300,10 @@ const executePaypalPayment = async (req, res) => {
     const txnId = response.result.id;
 
     // Redirect user to success page on frontend
-    res.redirect(`http://localhost:5173/success?txnId=${txnId}`);
+    res.redirect(`https://deploy-project-1-ndgn.onrender.com/success?txnId=${txnId}`);
   } catch (error) {
     console.error("Error:", error);
-    res.redirect(`http://localhost:5173/failure?txnId=${orderID}`);
+    res.redirect(`https://deploy-project-1-ndgn.onrender.com/failure?txnId=${orderID}`);
   }
 };
 
