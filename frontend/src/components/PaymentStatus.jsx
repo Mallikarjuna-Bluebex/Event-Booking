@@ -16,10 +16,10 @@ const PaymentSuccess = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   //const [paymentUpdated, setPaymentUpdated] = useState(false);
-  const paymentUpdatedRef = useRef(false); // ✅ Use useRef to prevent duplicate calls
+  const paymentUpdatedRef = useRef(false); //Use useRef to prevent duplicate calls
   const bookingId = sessionStorage.getItem('bookingId'); // Get bookingId from sessionStorage
-
-  console.log(bookingId)
+  sessionStorage.removeItem("skipReloadRedirect");//remove reload skip
+  //console.log(bookingId)
 
   
   // Fetch user and company data, then post to generate invoice
