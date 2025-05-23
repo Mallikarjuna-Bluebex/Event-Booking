@@ -12,7 +12,7 @@ import PaymentFailure from './components/PaymentFail';
 function App() {
   return (
     <div>
-      {/* ✅ Correct placement of ToastContainer  <Route path='/success' element={<SuccessPage />} /> />*/}
+      
       <ToastContainer />
       <Router>
         <Routes>
