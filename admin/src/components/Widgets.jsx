@@ -1,7 +1,7 @@
 import React, { useState,useEffect } from 'react';
 import axios from 'axios';
 
-const HomePage = () => {
+const Widgets = () => {
   const [currentMonthYear, setCurrentMonthYear] = useState('');
   const [bookings, setBookings] = useState([]);
   const [currentMonthBookingsCount, setCurrentMonthBookingsCount] = useState(0);
@@ -83,21 +83,6 @@ const HomePage = () => {
       console.error("Error fetching booking data:", error);
     }
   };
-
-{/*   // Calculate percentage change
-const calculatePercentage = () => {
-  const percentageChange = ((visitsCount - prevVisits) / (prevVisits || 1)) * 100;
-const roundedChange = Math.round(percentageChange); // or use toFixed(1) for 1 decimal
-
-// Determine trend
-const trend = visitsCount > prevVisits
-  ? 'increase'
-  : visitsCount < prevVisits
-  ? 'decrease'
-  : 'no change';
-
-console.log(`User visits ${trend} by ${Math.abs(roundedChange)}%`);
-}*/}
   
 
   return (
@@ -125,4 +110,4 @@ console.log(`User visits ${trend} by ${Math.abs(roundedChange)}%`);
   );
 };
 
-export default HomePage;
+export default Widgets;
