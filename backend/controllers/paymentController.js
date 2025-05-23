@@ -30,8 +30,8 @@ const payment = async (req, res) => {
             firstname: firstName,
             email,
             phone,
-            surl: `http://localhost:5000/api/user/verify/${txnId}`, // Success URL
-            furl: `http://localhost:5000/api/user/verify/${txnId}`, // Failure URL
+            surl: `https://deploy-project-k4im.onrender.com/api/user/verify/${txnId}`, // Success URL
+            furl: `https://deploy-project-k4im.onrender.com/api/user/verify/${txnId}`, // Failure URL
             udf1: 'custom1',
             udf2: '',
             udf3: '',
@@ -101,7 +101,7 @@ const verifyStatus = (req, res) => {
   
       const payload = {
         merchantId: PHONEPE_MERCHANT_ID,
-        merchantTransactionId: merchantTransactionId,  // ✅ Ensure correct key name
+        merchantTransactionId: merchantTransactionId,  //Ensure correct key name
         amount: totalAmount * 100,
         mobileNumber: "9999999999",
         redirectUrl:`http://localhost:5000/api/user/payment-status/${merchantTransactionId}`,
@@ -243,11 +243,11 @@ const environment = new paypal.core.SandboxEnvironment(
   PAYPAL_CLIENT_SECRET
 );
 
-// ✅ Create PayPal Client
+//Create PayPal Client
 const client = new paypal.core.PayPalHttpClient(environment);
 
 
-// ✅ Create a PayPal Order
+//Create a PayPal Order
 const initiatePaypal = async (req, res) => {
   console.log("Getting into initiatePaypal")
   const { totalAmount } = req.body;
