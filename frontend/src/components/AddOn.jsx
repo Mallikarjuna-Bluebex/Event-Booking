@@ -6,7 +6,7 @@ const AddOn = () => {
   const [addOns, setAddOns] = useState([]);
   const { bookingData, updateBookingData } = useContext(BookingContext);
 
-   const backendUrl = import.meta.env.VITE_BACKEND_URL;
+  const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
   useEffect(() => {
     const fetchAddOns = async () => {
