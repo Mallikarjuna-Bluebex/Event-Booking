@@ -71,8 +71,8 @@ const UserDetails = () => {
     if (shouldRedirect && !shouldSkip) {
       sessionStorage.removeItem("shouldRedirectHome");
       sessionStorage.removeItem("skipReloadRedirect");
-      // Force hard redirect to home
-    window.location.replace("/");
+      //redirect to home
+      window.location.replace("/");
     }
 
     // Set reload flag if user reloads the page
@@ -110,7 +110,7 @@ const UserDetails = () => {
 
   const handleCheckboxChange = () => {
     setIsChecked(!isChecked);
-    if (!isChecked) setShowCheckboxError(false); // ✅ Hide error when checkbox is selected
+    if (!isChecked) setShowCheckboxError(false); //Hide error when checkbox is selected
   };
 
   // Real-time email validation
@@ -373,7 +373,7 @@ const UserDetails = () => {
   }
 
   //paypal payment
-  // ✅ Create Payment
+  //Create Payment
 const handlePaypalPayment = async () => {
   if (!isChecked) {
       setShowCheckboxError(true); // Show error message if checkbox is not checked
