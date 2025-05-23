@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
 import ContentArea from "../components/ContentArea";
-import HomePage from '../components/Widgets'
+import Widgets from '../components/Widgets'
 import { CiSearch } from "react-icons/ci";
 import { useEvent } from "../context/EventContext"; 
 import {
@@ -285,7 +285,7 @@ const Dashboard = () => {
     <div className="min-h-screen flex flex-col">
       <div className="mt-2">
         <div className="flex flex-1 p-4 items-center">
-          <HomePage/>
+          <Widgets/>
         </div>
       </div>
 
