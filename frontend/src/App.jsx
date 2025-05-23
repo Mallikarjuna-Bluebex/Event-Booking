@@ -2,10 +2,10 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import MonthlyCalendar from './components/Calendar';
 import Services from './components/Services';
 import UserDetails from './components/userDetails';
-import PaymentSuccess from './components/PaymentStatus';
+import PaymentSuccess from './components/PaymentSuccess';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'; 
-import PaymentFailure from './components/Payment';
+import PaymentFailure from './components/PaymentFail';
 //import Home from './components/Home';
 
 
