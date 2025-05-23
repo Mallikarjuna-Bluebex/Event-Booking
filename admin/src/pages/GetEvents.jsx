@@ -60,7 +60,7 @@ const GetEvents = () => {
   
   const handleDelete = async (serviceId, categoryId) => {
     if (!serviceId || !categoryId) {
-      console.error("🚨 Missing categoryId or _id!");
+      console.error("Missing categoryId or _id!");
       return;
     }
   
@@ -75,10 +75,10 @@ const GetEvents = () => {
         toast.success("Deleted Successfully")
         fetchEvents(); // Refresh the event list after deletion
       } else {
-        console.error("🚨 Failed to delete event:", await response.json());
+        console.error("Failed to delete event:", await response.json());
       }
     } catch (error) {
-      console.error("🚨 Error deleting event:", error);
+      console.error("Error deleting event:", error);
     }
   };
   

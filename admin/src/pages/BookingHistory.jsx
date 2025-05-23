@@ -60,7 +60,7 @@ const BookingHistory = () => {
   });
 
 
-  // ✅ Handle Column Visibility Toggle
+  //Handle Column Visibility Toggle
   const toggleColumn = (column) => {
     setVisibleColumns((prev) => ({
       ...prev,
@@ -68,7 +68,7 @@ const BookingHistory = () => {
     }));
   };
  
-  // ✅ Export Visible Columns Only
+  //Export Visible Columns Only
   const downloadExcel = () => {
     const filteredData = bookings.map((booking) => {
       let row = {};
