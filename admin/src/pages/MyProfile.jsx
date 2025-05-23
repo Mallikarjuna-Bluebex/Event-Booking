@@ -67,43 +67,7 @@ const MyProfile = () => {
                   }
             }
     
-      {/*
-        const handleUpload = async () => {
-        if (!image) {
-          alert("Please select an image!");
-          return;
-        }
-    
-        const formData = new FormData();
-        formData.append("image", image);
-    
-        try {
-          const response = await axios.post("http://localhost:5000/upload", formData, {
-            headers: { "Content-Type": "multipart/form-data" },
-          });
-    
-          setUploadedImageUrl(response.data.imageUrl);
-          alert("Image uploaded successfully!");
-        } catch (error) {
-          console.error("Upload failed:", error);
-          alert("Upload failed!");
-        }
-      };
-        <h2 className="block font-semibold">Company Logo</h2>
-                    <div style={{ textAlign: "center", padding: "20px" }}>
-      
-      <input className="border rounded" type="file" onChange={handleFileChange} accept="image/*" />
-      {preview && <img src={preview} alt="Preview" style={{ width: "100px", height:"100px", marginTop: "10px" }} />}
-      <button onClick={handleUpload} style={{ display: "block", margin: "10px auto" }}>
-        Upload
-      </button> */}
-     {/* {uploadedImageUrl && (
-        <div>
-          <h3>Uploaded Image:</h3>
-          <img src={uploadedImageUrl} alt="Uploaded" style={{ width: "300px" }} />
-        </div>
-      )}
-    </div> */}
+     
 
     return (
         <div className="max-w-md bg-white shadow-lg rounded-xl mx-auto mt-7 p-6">
