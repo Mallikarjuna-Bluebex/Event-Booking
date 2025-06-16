@@ -278,7 +278,7 @@ const MonthlyCalendar = () => {
   >
     {/* Image */}
     <img
-      className="w-full h-[480px] object-cover rounded-sm"
+      className="w-full h-[475px] object-cover rounded-sm"
       src={images[currentIndex].src}
       alt={images[currentIndex].alt}
       loading="eager"
