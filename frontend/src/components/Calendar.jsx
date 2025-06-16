@@ -270,7 +270,7 @@ const MonthlyCalendar = () => {
    </div>
 
    {/*images */}
-   <div className="hidden lg:flex w-full max-w-[590px] mx-auto xl:ml-7 px-4 xl:px-0">
+ <div className="hidden lg:flex w-full max-w-[680px] xl:max-w-[590px] mx-auto ml-30 xl:ml-7 px-4 xl:px-0">
   <div
     className="relative w-full overflow-hidden shadow-lg transition-all duration-300 mt-10"
     onMouseEnter={() => setIsHovered(true)}
